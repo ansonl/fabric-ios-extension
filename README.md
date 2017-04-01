@@ -37,8 +37,8 @@ ${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
 6. Import frameworks into your initial view controller or class.
 
     ```
- #import <Fabric/Fabric.h>
- #import <Crashlytics/Crashlytics.h>
+    #import <Fabric/Fabric.h>
+    #import <Crashlytics/Crashlytics.h>
     ```
 
 7. Add or modify `initWithCoder:` method in your initial view controller or class.
