@@ -8,10 +8,10 @@ How to integrate Fabric with your own iOS extension (with API key and build secr
 
 2. Import frameworks into your Xcode project
 
-  - ![Import frameworks to Xcode project](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/blob/master/assets/import-frameworks.gif)
+  - ![Import frameworks to Xcode project](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/import-frameworks.gif)
 
 3. Create `fabric.apikey` and `fabric.buildsettings` files in Xcode project directory root. Put your Fabric API key and build secret into the files respectively.
-  - ![Create files](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/blob/master/assets/create-files.png)
+  - ![Create files](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/create-files.png)
 
 4. Add the below lines to the project `.gitignore` file if you intend on making the project public. 
     ```
@@ -19,7 +19,7 @@ fabric.apikey
 fabric.buildsecret
     ```
 
-  - ![Add files to .gitignore](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/blob/master/assets/add-files-to-gitignore.png)
+  - ![Add files to .gitignore](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/add-files-to-gitignore.gif)
 
 5. Add *Run Script* below to your extension target. *Run Script* is located under the *[ExtensionTarget]* > *Build Phases*. 
 
