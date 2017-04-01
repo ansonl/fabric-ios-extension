@@ -1,6 +1,8 @@
 **Fabric iOS Extension**
 ===================
 
+If you are looking for a customizble iMessage sticker project with Fabric integrated, see [github.com/Fluffcorn](https://github.com/Fluffcorn/ios-sticker-packs-app).
+
 How to integrate Fabric with your own iOS extension (with API key and build secret isolation for public projects and distribution)
 -------------
 
