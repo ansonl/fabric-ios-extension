@@ -16,6 +16,7 @@ How to integrate Fabric with your own iOS extension (with API key and build secr
   - ![Create files](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/create-files.png)
 
 4. Add the below lines to the project `.gitignore` file if you intend on making the project public. 
+
     ```
 fabric.apikey
 fabric.buildsecret
@@ -34,10 +35,12 @@ ${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
 - ![Add run script](https://github.com/ansonl/fabric-ios-extension/blob/master/assets/add-run-script.gif)
 
 6. Import frameworks into your initial view controller or class.
+
     ```
  #import <Fabric/Fabric.h>
  #import <Crashlytics/Crashlytics.h>
     ```
+
 7. Add or modify `initWithCoder:` method in your initial view controller or class.
 
     ```
@@ -58,4 +61,5 @@ ${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
     return self;
 }
     ```
+
 8. Build and Run
