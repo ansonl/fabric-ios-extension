@@ -27,9 +27,9 @@ fabric.buildsecret
 5. Add *Run Script* below to your extension target. *Run Script* is located under the *[ExtensionTarget]* > *Build Phases*. 
 
     ```
-FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)
-FABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)
-${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
+    FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)
+    FABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)
+    ${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
     ```
 
 - ![Add run script](https://github.com/ansonl/fabric-ios-extension/blob/master/assets/add-run-script.gif)
