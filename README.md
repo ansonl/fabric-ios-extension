@@ -44,22 +44,22 @@ ${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}
 7. Add or modify `initWithCoder:` method in your initial view controller or class.
 
     ```
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (!self) {
-        return nil;
+    - (id)initWithCoder:(NSCoder *)decoder {
+        self = [super initWithCoder:decoder];
+        if (!self) {
+           return nil;
+        }
+    
+        NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+        NSStringEncoding usedEncoding;
+        NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+        NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+    
+        [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    
+        return self;
     }
-    
-    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
-    NSStringEncoding usedEncoding;
-    NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
-    NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
-    
-    [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
-    
-    return self;
-}
     ```
 
 8. Build and Run
