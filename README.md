@@ -18,8 +18,8 @@ How to integrate Fabric with your own iOS extension (with API key and build secr
 4. Add the below lines to the project `.gitignore` file if you intend on making the project public. 
 
     ```
-fabric.apikey
-fabric.buildsecret
+    fabric.apikey
+    fabric.buildsecret
     ```
 
   - ![Add files to .gitignore](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/add-files-to-gitignore.gif)
