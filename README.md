@@ -63,3 +63,9 @@ How to integrate Fabric with your own iOS extension (with API key and build secr
     ```
 
 8. Build and Run
+
+Sources
+-------------
+- https://fabric.io/kits/ios/crashlytics/manual-install
+- http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project
+- https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
