@@ -8,12 +8,37 @@
 
 #import "MessagesViewController.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface MessagesViewController ()
 
 @end
 
 @implementation MessagesViewController
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super initWithCoder:decoder];
+    if (!self) {
+        return nil;
+    }
+    
+    //From http://herzbube.ch/blog/2016/08/how-hide-fabric-api-key-and-build-secret-open-source-project and https://twittercommunity.com/t/should-apikey-be-kept-secret/52644/6
+    //Get API key from fabric.apikey file in mainBundle
+    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric.apikey" withExtension:nil];
+    NSStringEncoding usedEncoding;
+    NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+    
+    // The string that results from reading the bundle resource contains a trailing
+    // newline character, which we must remove now because Fabric/Crashlytics
+    // can't handle extraneous whitespace.
+    NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+    
+    [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +90,23 @@
     // Called before the extension transitions to a new presentation style.
     
     // Use this method to prepare for the change in presentation style.
+    
+    NSString *presentationStyleTitle;
+    switch (presentationStyle) {
+        case MSMessagesAppPresentationStyleCompact:
+            presentationStyleTitle = @"Compact";
+            break;
+        case MSMessagesAppPresentationStyleExpanded:
+            presentationStyleTitle = @"Expanded";
+            break;
+        default:
+            presentationStyleTitle = @"Unknown";
+            break;
+    }
+    //Fabric Answers activity logging for detecting when user expands or compacts view
+    [Answers logCustomEventWithName:@"Changed Presentation Style"
+                   customAttributes:@{
+                                      @"PresentationStyle" : presentationStyleTitle}];
 }
 
 -(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {

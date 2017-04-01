@@ -13,6 +13,10 @@
 		287494D91E90261F009D2230 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287494D81E90261F009D2230 /* MessagesViewController.m */; };
 		287494DC1E90261F009D2230 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287494DA1E90261F009D2230 /* MainInterface.storyboard */; };
 		287494DE1E90261F009D2230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 287494DD1E90261F009D2230 /* Assets.xcassets */; };
+		287494EF1E9027DC009D2230 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287494ED1E9027DC009D2230 /* Crashlytics.framework */; };
+		287494F01E9027DC009D2230 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287494EE1E9027DC009D2230 /* Fabric.framework */; };
+		287494F21E902850009D2230 /* fabric.apikey in Resources */ = {isa = PBXBuildFile; fileRef = 287494F11E902850009D2230 /* fabric.apikey */; };
+		287494F41E902869009D2230 /* fabric.buildsecret in Resources */ = {isa = PBXBuildFile; fileRef = 287494F31E902869009D2230 /* fabric.buildsecret */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		287494DB1E90261F009D2230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		287494DD1E90261F009D2230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		287494DF1E90261F009D2230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		287494ED1E9027DC009D2230 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		287494EE1E9027DC009D2230 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		287494F11E902850009D2230 /* fabric.apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.apikey; sourceTree = SOURCE_ROOT; };
+		287494F31E902869009D2230 /* fabric.buildsecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric.buildsecret; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287494EF1E9027DC009D2230 /* Crashlytics.framework in Frameworks */,
 				287494D51E90261F009D2230 /* Messages.framework in Frameworks */,
+				287494F01E9027DC009D2230 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +77,8 @@
 		287494BE1E90261F009D2230 = {
 			isa = PBXGroup;
 			children = (
+				287494ED1E9027DC009D2230 /* Crashlytics.framework */,
+				287494EE1E9027DC009D2230 /* Fabric.framework */,
 				287494C71E90261F009D2230 /* FabricExtension */,
 				287494D61E90261F009D2230 /* MessagesExtension */,
 				287494D31E90261F009D2230 /* Frameworks */,
@@ -108,6 +120,8 @@
 				287494DA1E90261F009D2230 /* MainInterface.storyboard */,
 				287494DD1E90261F009D2230 /* Assets.xcassets */,
 				287494DF1E90261F009D2230 /* Info.plist */,
+				287494F11E902850009D2230 /* fabric.apikey */,
+				287494F31E902869009D2230 /* fabric.buildsecret */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -139,6 +153,7 @@
 				287494CB1E90261F009D2230 /* Sources */,
 				287494CC1E90261F009D2230 /* Frameworks */,
 				287494CD1E90261F009D2230 /* Resources */,
+				287494F51E90289D009D2230 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -202,12 +217,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287494F21E902850009D2230 /* fabric.apikey in Resources */,
+				287494F41E902869009D2230 /* fabric.buildsecret in Resources */,
 				287494DE1E90261F009D2230 /* Assets.xcassets in Resources */,
 				287494DC1E90261F009D2230 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		287494F51E90289D009D2230 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FABRIC_APIKEY=$(cat ${SRCROOT}/fabric.apikey)\nFABRIC_BUILDSECRET=$(cat ${SRCROOT}/fabric.buildsecret)\n${SRCROOT}/Fabric.framework/run ${FABRIC_APIKEY} ${FABRIC_BUILDSECRET}";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		287494CB1E90261F009D2230 /* Sources */ = {
@@ -337,6 +370,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.FabricExtension.MessagesExtension;
@@ -350,6 +387,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 3E2UWZ76C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ansonliu.FabricExtension.MessagesExtension;
