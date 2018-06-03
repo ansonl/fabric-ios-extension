@@ -12,7 +12,7 @@ How to integrate Fabric with your own iOS extension (with API key and build secr
 
   - ![Import frameworks to Xcode project](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/import-frameworks.gif)
 
-3. Create `fabric.apikey` and `fabric.buildsettings` files in Xcode project directory root. Put your Fabric API key and build secret into the files respectively.
+3. Create `fabric.apikey` and `fabric.buildsecret` files in Xcode project directory root. Put your Fabric API key and build secret into the files respectively.
   - ![Create files](https://raw.githubusercontent.com/ansonl/fabric-ios-extension/master/assets/create-files.png)
 
 4. Add the below lines to the project `.gitignore` file if you intend on making the project public. 
